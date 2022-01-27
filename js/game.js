@@ -97,24 +97,24 @@ function playGame(jugador, maquina) {
     }
 }
 
-for (let i = 0; i < 5; i++) {
 
-    playGame(playerSelection(), computerSelection());
 
-    if (resultado == "empate") {
-        console.log("Tú: " + player);
-        console.log("CPU: " + cpu);
-        console.log("¡Empate!");
-    } else if (resultado == "victoria") {
-        console.log("Tú: " + player);
-        console.log("CPU: " + cpu);
-        console.log("¡Ganaste! " + player + " gana a " + cpu.toLowerCase() + ".");
-    } else if (resultado == "derrota") {
-        console.log("Tú: " + player);
-        console.log("CPU: " + cpu);
-        console.log("¡Perdiste! " + cpu + " gana a " + player.toLowerCase() + ".");
-    }
+playGame(playerSelection(), computerSelection());
 
+if (resultado == "empate") {
+    console.log("Tú: " + player);
+    console.log("CPU: " + cpu);
+    console.log("¡Empate!");
+} else if (resultado == "victoria") {
+    console.log("Tú: " + player);
+    console.log("CPU: " + cpu);
+    console.log("¡Ganaste! " + player + " gana a " + cpu.toLowerCase() + ".");
+} else if (resultado == "derrota") {
+    console.log("Tú: " + player);
+    console.log("CPU: " + cpu);
+    console.log("¡Perdiste! " + cpu + " gana a " + player.toLowerCase() + ".");
 }
 
-console.log("Ganadas: "+victoria+" Empatadas: "+empate+" Perdidas: "+derrota);
+
+
+console.log("Ganadas: " + victoria + " Empatadas: " + empate + " Perdidas: " + derrota);
