@@ -1,8 +1,18 @@
-let posibilidades = ["Piedra", "Papel", "Tijera"];
-// cpu y player las necesito fuera del scope de sus funciones 
-// para poder mostrar más adelante quien ha ganado a quien
+const posibilidades = ["Piedra", "Papel", "Tijera"];
+const piedra = document.querySelector('#piedra');
+const papel = document.querySelector('#papel');
+const tijera = document.querySelector('#tijera');
 let cpu;
 let player;
+let texto;
+
+// Declaramos la variable donde almacenaremos el resultado de cada juego y los
+// contadores con los que llevaremos la cuenta de nuestro progreso
+
+let resultado;
+let empate = 0;
+let victoria = 0;
+let derrota = 0;
 
 function computerSelection() {
 
@@ -17,36 +27,19 @@ function computerSelection() {
 
 }
 
-function playerSelection() {
+function playerSelection(opcion) {
 
-    // Introducimos un texto y lo pasamos a minúsuculas
+    player = posibilidades[opcion];
+    /* console.log(`this playerSeleccion: ${this}`); */
 
-    let texto = prompt("¿Qué eliges?").toLowerCase();
-
-    // Pasamos la primera letra a mayúsculas y lo almacenamos en r1
-
-    let r1 = texto.charAt(0).toUpperCase();
-
-    // Cortamos el resto del texto y lo almacenamos en r2
-
-    let r2 = texto.slice(1, texto.length);
-
-    // Juntamos r1 y r2 en la variable player
-
-    player = r1 + r2;
-
-    return player;
+    return { player };
 }
 
-// Declaramos la variable donde almacenaremos el resultado de cada juego y los
-// contadores con los que llevaremos la cuenta de nuestro progreso
-
-let resultado;
-let empate = 0;
-let victoria = 0;
-let derrota = 0;
-
 function playGame(jugador, maquina) {
+
+/*     console.log("aquí llega algo");
+    console.log(`jugador: ${jugador}`);
+    console.log(`maquina: ${maquina}`); */
 
     if (jugador === maquina) {
 
@@ -90,31 +83,71 @@ function playGame(jugador, maquina) {
         derrota++;
         return resultado;
 
-    } else {
-
-        playGame(playerSelection(), computerSelection());
-
     }
+
+    /* console.log(`resultado: ${resultado}`); */
+
 }
 
-
-
-playGame(playerSelection(), computerSelection());
-
-if (resultado == "empate") {
-    console.log("Tú: " + player);
-    console.log("CPU: " + cpu);
-    console.log("¡Empate!");
-} else if (resultado == "victoria") {
-    console.log("Tú: " + player);
-    console.log("CPU: " + cpu);
-    console.log("¡Ganaste! " + player + " gana a " + cpu.toLowerCase() + ".");
-} else if (resultado == "derrota") {
-    console.log("Tú: " + player);
-    console.log("CPU: " + cpu);
-    console.log("¡Perdiste! " + cpu + " gana a " + player.toLowerCase() + ".");
+function eligePiedra() {
+    playerSelection(0);
+    computerSelection();
+/*     console.log(player);
+    console.log(cpu);
+    console.log(typeof player);
+    console.log(typeof cpu);
+    console.log(`this eligepiedra: ${this}`) */
+    playGame(player, cpu);
+    comprobacion();
 }
 
+function eligePapel() {
+    playerSelection(1);
+    computerSelection();
+/*     console.log(player);
+    console.log(cpu);
+    console.log(typeof player);
+    console.log(typeof cpu);
+    console.log(`this eligepapel: ${this}`) */
+    playGame(player, cpu);
+    comprobacion();
+}
 
+function eligeTijera() {
+    playerSelection(2);
+    computerSelection();
+/*     console.log(player);
+    console.log(cpu);
+    console.log(typeof player);
+    console.log(typeof cpu);
+    console.log(`this eligetijera: ${this}`) */
+    playGame(player, cpu);
+    comprobacion();
+}
 
-console.log("Ganadas: " + victoria + " Empatadas: " + empate + " Perdidas: " + derrota);
+piedra.addEventListener('click', eligePiedra, false);
+papel.addEventListener('click', eligePapel, false);
+tijera.addEventListener('click', eligeTijera, false);
+
+function comprobacion() {
+
+    if (resultado == "empate") {
+        console.log("Tú: " + player);
+        console.log("CPU: " + cpu);
+        console.log("¡Empate!");
+        console.log("Ganadas: " + victoria + " Empatadas: " + empate + " Perdidas: " + derrota);
+    } else if (resultado == "victoria") {
+        console.log("Tú: " + player);
+        console.log("CPU: " + cpu);
+        console.log("¡Ganaste! " + player + " gana a " + cpu.toLowerCase() + ".");
+        console.log("Ganadas: " + victoria + " Empatadas: " + empate + " Perdidas: " + derrota);
+    } else if (resultado == "derrota") {
+        console.log("Tú: " + player);
+        console.log("CPU: " + cpu);
+        console.log("¡Perdiste! " + cpu + " gana a " + player.toLowerCase() + ".");
+        console.log("Ganadas: " + victoria + " Empatadas: " + empate + " Perdidas: " + derrota);
+    }
+
+}
+
+// console.log("Ganadas: " + victoria + " Empatadas: " + empate + " Perdidas: " + derrota);
