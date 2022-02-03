@@ -6,13 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piedra, papel, tijeras</title>
     <link rel="icon" type="image/png" sizes="96x96" href="./favicon.png">
+    <link rel="stylesheet" href="style.css">
     <script src="./js/game.js" defer></script>
 </head>
 
 <body>
-    <button id="piedra">Piedra</button>
-    <button id="papel">Papel</button>
-    <button id="tijera">Tijera</button>
+    <div id="botones">
+        <table>
+            <tr id="eleccionPlayer">
+                <td id="playerPiedra"></td>
+                <td id="playerPapel"></td>
+                <td id="playerTijera"></td>
+            </tr>
+            <tr>
+                <td><button id="piedra">✊</button></td>
+                <td><button id="papel">✋</button></td>
+                <td><button id="tijera">✌️</button></td>
+            </tr>
+            <tr id="eleccionCPU">
+                <td id="cpuPiedra"></td>
+                <td id="cpuPapel"></td>
+                <td id="cpuTijera"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="marcadores">
+        <table>
+            <tr>
+                <td colspan="4" id="decision"></td>
+            </tr>
+            <tr>
+                <td id="ganadas">Ganadas: 0</td>
+                <td id="empatadas">Empatadas: 0</td>
+                <td id="perdidas">Perdidas: 0</td>
+                <td id="total">Total: 0</td>
+            </tr>
+            <tr>
+                <td colspan="4" id="startOver"></td>
+            </tr>
+        </table>
+    </div>
 </body>
 
 </html>

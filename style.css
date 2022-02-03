@@ -1,0 +1,55 @@
+body {
+    background-color: antiquewhite;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#decision {
+    height: 31px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#ganadas,
+#empatadas,
+#perdidas,
+#total {
+    font-size: 1.5em;
+}
+
+button#piedra,
+button#papel,
+button#tijera {
+    height: 100px;
+    width: 100px;
+    font-size: 3em;
+}
+
+#botones {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0px 50px 0;
+}
+
+#marcadores {
+    display: flex;
+    justify-content: center;
+}
+
+tr#eleccionPlayer,
+tr#eleccionCPU {
+    text-align: center;
+    height: 21px;
+}
+
+td#startOver {
+    padding-top: 25px;
+    text-align: center;
+}
+
+button#gameOver {
+    height: 30px;
+    width: 120px;
+}
